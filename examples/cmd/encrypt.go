@@ -182,7 +182,6 @@ func keyTypeForKeyType(alg string) (ocrypto.KeyType, error) {
 	case ocrypto.RSA2048Key, ocrypto.RSA4096Key, ocrypto.EC256Key, ocrypto.EC384Key, ocrypto.EC521Key:
 		return kt, nil
 	default:
-		// do not submit add ocrypto.UnknownKey
 		return ocrypto.RSA2048Key, fmt.Errorf("unsupported key type [%s]", alg)
 	}
 }
