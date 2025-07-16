@@ -71,7 +71,7 @@ func init() {
 	benchmarkCmd.Flags().IntVar(&config.RequestsPerSecond, "rps", 50, "Requests per second limit")             //nolint: mnd // This is output to the help with explanation
 	benchmarkCmd.Flags().IntVar(&config.TimeoutSeconds, "timeout", 30, "Timeout in seconds")                   //nolint: mnd // This is output to the help with explanation
 	benchmarkCmd.Flags().Var(&config.TDFFormat, "tdf", "TDF format (tdf3 or nanotdf)")
-	benchmarkCmd.Flags().StringVar(&config.WrapperAlg, "wrapper", "rsa:2048", "Wrapper algorithm (e.g. mlkem or ec)")
+benchmarkCmd.Flags().StringVar(&config.WrapperAlg, "wrapper", "rsa:2048", "Wrapper algorithm (e.g. rsa:2048, ec:secp256r1)")
 	ExamplesCmd.AddCommand(benchmarkCmd)
 }
 
