@@ -160,9 +160,11 @@ func (s *AttributesService) GetAttributeValuesByFqns(ctx context.Context,
 	//ctx, span := s.Tracer.Start(ctx, "GetAttributeValuesByFqns")
 	//defer span.End()
 
-	_, ok := ctx.Deadline()
+	duration, ok := ctx.Deadline()
 	if !ok {
 		slog.Debug("no deadline set, using default")
+	} else {
+		slog.Debug("deadline set", slog.Time("deadline", duration))
 	}
 
 	slog.Info("GetAttributeValuesByFqns called", slog.Any("fqns", req.Msg.GetFqns()))
