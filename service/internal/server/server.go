@@ -365,6 +365,8 @@ func newHTTPServer(c Config, connectRPC http.Handler, originalGrpcGateway http.H
 		c.HTTPServerConfig.WriteTimeout = defaultWriteTimeout
 	}
 
+	slog.Debug("http server configuration", "config", c.HTTPServerConfig)
+
 	return &http.Server{
 		Addr:              fmt.Sprintf("%s:%d", c.Host, c.Port),
 		WriteTimeout:      c.HTTPServerConfig.WriteTimeout,
