@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"log/slog"
+	"time"
 
 	"connectrpc.com/connect"
 	"github.com/opentdf/platform/protocol/go/policy"
@@ -122,6 +123,10 @@ func (s KeyAccessServerRegistry) CreateKeyAccessServer(ctx context.Context,
 func (s KeyAccessServerRegistry) ListKeyAccessServers(ctx context.Context,
 	req *connect.Request[kasr.ListKeyAccessServersRequest],
 ) (*connect.Response[kasr.ListKeyAccessServersResponse], error) {
+	slog.Debug("sleeping")
+	time.Sleep(11 * time.Second)
+	slog.Debug("woke up")
+
 	rsp, err := s.dbClient.ListKeyAccessServers(ctx, req.Msg)
 	if err != nil {
 		return nil, db.StatusifyError(ctx, s.logger, err, db.ErrTextListRetrievalFailed)
