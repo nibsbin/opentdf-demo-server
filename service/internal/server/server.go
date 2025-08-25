@@ -78,6 +78,7 @@ func (c Config) LogValue() slog.Value {
 		slog.Any("grpc", c.GRPC),
 		slog.Any("tls", c.TLS),
 		slog.Any("cors", c.CORS),
+		slog.Any("http", c.HTTPServerConfig),
 		slog.Int("port", c.Port),
 		slog.String("host", c.Host),
 		slog.Bool("enablePprof", c.EnablePprof),

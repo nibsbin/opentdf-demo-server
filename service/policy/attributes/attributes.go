@@ -157,13 +157,23 @@ func (s *AttributesService) GetAttribute(ctx context.Context,
 func (s *AttributesService) GetAttributeValuesByFqns(ctx context.Context,
 	req *connect.Request[attributes.GetAttributeValuesByFqnsRequest],
 ) (*connect.Response[attributes.GetAttributeValuesByFqnsResponse], error) {
-	ctx, span := s.Tracer.Start(ctx, "GetAttributeValuesByFqns")
-	defer span.End()
+	//ctx, span := s.Tracer.Start(ctx, "GetAttributeValuesByFqns")
+	//defer span.End()
+
+	_, ok := ctx.Deadline()
+	if !ok {
+		slog.Debug("no deadline set, using default")
+	}
+
+	slog.Info("GetAttributeValuesByFqns called", slog.Any("fqns", req.Msg.GetFqns()))
 
 	rsp := &attributes.GetAttributeValuesByFqnsResponse{}
 
 	fqnsToAttributes, err := s.dbClient.GetAttributesByValueFqns(ctx, req.Msg)
 	if err != nil {
+		if ctx.Err() != nil {
+			return nil, fmt.Errorf("context error on get attribute value by fqn [FQN: %s]: %w", req.Msg.GetFqns()[0], context.Cause(ctx))
+		}
 		return nil, db.StatusifyError(ctx, s.logger, err, db.ErrTextGetRetrievalFailed, slog.String("fqns", fmt.Sprintf("%v", req.Msg.GetFqns())))
 	}
 	rsp.FqnAttributeValues = fqnsToAttributes
