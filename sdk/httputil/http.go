@@ -11,7 +11,7 @@ const (
 	// defaults to match DefaultTransport - defined to satisfy lint
 	maxIdleConns          = 100
 	idleConnTimeout       = 90 * time.Second
-	tlsHandshakeTimeout   = 10 * time.Second
+	tlsHandshakeTimeout   = 30 * time.Second
 	expectContinueTimeout = 1 * time.Second
 )
 

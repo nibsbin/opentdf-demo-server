@@ -37,8 +37,8 @@ import (
 )
 
 const (
-	defaultWriteTimeout time.Duration = 5 * time.Second
-	defaultReadTimeout  time.Duration = 10 * time.Second
+	defaultWriteTimeout time.Duration = 120 * time.Second
+	defaultReadTimeout  time.Duration = 120 * time.Second
 	shutdownTimeout     time.Duration = 5 * time.Second
 )
 
