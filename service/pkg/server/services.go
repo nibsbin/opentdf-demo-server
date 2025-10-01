@@ -17,6 +17,7 @@ import (
 	"github.com/opentdf/platform/service/health"
 	"github.com/opentdf/platform/service/internal/server"
 	"github.com/opentdf/platform/service/kas"
+	"github.com/opentdf/platform/service/kasgateway"
 	logging "github.com/opentdf/platform/service/logger"
 	"github.com/opentdf/platform/service/pkg/cache"
 	"github.com/opentdf/platform/service/pkg/config"
@@ -74,7 +75,8 @@ func registerCoreServices(reg *serviceregistry.Registry, mode []string) ([]strin
 			services = append(services, []serviceregistry.IService{
 				authorization.NewRegistration(),
 				authorizationV2.NewRegistration(),
-				kas.NewRegistration(),
+				// kas.NewRegistration(),
+				kasgateway.NewRegistration(),
 				wellknown.NewRegistration(),
 				entityresolution.NewRegistration(),
 				entityresolutionV2.NewRegistration(),
