@@ -1,3 +1,5 @@
+go install github.com/opentdf/otdfctl@latest
+
 cp opentdf-dev.yaml opentdf.yaml
 sudo ./.github/scripts/init-temp-keys.sh
 sudo cp ./keys/localhost.crt /usr/local/share/ca-certificates/ && sudo update-ca-certificates
@@ -6,8 +8,9 @@ sudo cp ./keys/localhost.crt /usr/local/share/ca-certificates/ && sudo update-ca
 sudo docker ps -aq | sudo xargs -r docker rm -f
 sudo docker compose up -d --wait
 
-sleep 4
+sleep 3
 
 go run ./service provision keycloak
 go run ./service provision fixtures
 go run ./service start &
+
