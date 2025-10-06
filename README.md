@@ -256,3 +256,24 @@ service follows a modular binary architecture, while the sub-services are gRPC s
   - A full list of SDKs can be found at [github.com/opentdf](https://github.com/opentdf).
 - Service SDK - The SDK generated from the service proto definitions.
   - The proto definitions are maintained by each service.
+
+## Running with GitHub Codespace
+
+We recommend running with a 4-core codespace
+
+First time running in the codespace:
+
+```sh
+sudo ./setup.sh
+```
+
+Every time after:
+
+```sh
+sudo ./startup.sh
+```
+
+You can find Keycloak at localhost:8888/auth
+
+With username: admin
+With password: changeme
