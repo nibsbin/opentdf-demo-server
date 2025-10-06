@@ -17,4 +17,4 @@ fi
 # Kill existing containers and start fresh
 sudo docker ps -aq | sudo xargs -r docker rm -f
 
-sh ./startup.sh
+sudo sh ./startup.sh
