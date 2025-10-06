@@ -1,3 +1,4 @@
+
 sudo docker compose up -d --wait
 
 sleep 3
