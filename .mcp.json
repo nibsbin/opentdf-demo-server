@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "opentdf": {
+      "type": "stdio",
+      "command": "/workspaces/opentdf-demo-server/opentdf-mcp/opentdf-mcp-server",
+      "args": [],
+      "env": {
+        "OPENTDF_PLATFORM_ENDPOINT": "http://localhost:8080",
+        "OPENTDF_CLIENT_ID": "opentdf-sdk",
+        "OPENTDF_CLIENT_SECRET": "secret"
+      }
+    }
+  }
+}
