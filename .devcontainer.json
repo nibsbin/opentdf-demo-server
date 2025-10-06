@@ -1,0 +1,12 @@
+// .devcontainer.json
+{
+  "customizations": {
+    "codespaces": {
+      "repositories": {
+        "nibsbin/opentdf-mcp": {
+          "permissions": "write-all"
+        }
+      }
+    }
+  }
+}
