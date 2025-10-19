@@ -1,0 +1,3 @@
+[submodule "opentdf-memo-demo"]
+	path = opentdf-memo-demo
+	url = https://github.com/nibsbin/opentdf-memo-demo.git
