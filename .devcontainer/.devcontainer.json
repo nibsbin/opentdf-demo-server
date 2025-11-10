@@ -1,0 +1,17 @@
+{
+  "customizations": {
+    "codespaces": {
+      "repositories": {
+        "nibsbin/opentdf-demo-server": {
+          "permissions": "write-all"
+        },
+        "nibsbin/opentdf-memo-demo": {
+          "permissions": "write-all"
+        },
+        "nibsbin/opentdf-mcp": {
+          "permissions": "write-all"
+        }
+      }
+    }
+  }
+}
