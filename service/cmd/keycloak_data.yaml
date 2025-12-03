@@ -8,6 +8,43 @@ customAudMapper: &customAudMapper
     included.custom.audience: *serverBaseUrl
     access.token.claim: "true"
     id.token.claim: "true"
+# USAF Demo - Client attribute mappers for ABAC
+flightIdMapper: &flightIdMapper
+  name: flight_id-mapper
+  protocol: openid-connect
+  protocolMapper: oidc-usermodel-client-role-mapper
+  config:
+    user.attribute: flight_id
+    claim.name: attributes.flight_id
+    jsonType.label: String
+    access.token.claim: "true"
+    id.token.claim: "true"
+    userinfo.token.claim: "true"
+    multivalued: "true"
+classificationMapper: &classificationMapper
+  name: classification-mapper
+  protocol: openid-connect
+  protocolMapper: oidc-usermodel-client-role-mapper
+  config:
+    user.attribute: classification
+    claim.name: attributes.classification
+    jsonType.label: String
+    access.token.claim: "true"
+    id.token.claim: "true"
+    userinfo.token.claim: "true"
+    multivalued: "true"
+functionalMapper: &functionalMapper
+  name: functional-mapper
+  protocol: openid-connect
+  protocolMapper: oidc-usermodel-client-role-mapper
+  config:
+    user.attribute: functional
+    claim.name: attributes.functional
+    jsonType.label: String
+    access.token.claim: "true"
+    id.token.claim: "true"
+    userinfo.token.claim: "true"
+    multivalued: "true"
 realms:
   - realm_repepresentation:
       realm: opentdf
@@ -81,6 +118,114 @@ realms:
             - 'http://localhost:*'
           protocolMappers:
             - *customAudMapper
+      # USAF Demo Users - Col Ashley Nies (Wing Commander)
+      - client:
+          clientID: ashley.nies
+          enabled: true
+          name: ashley.nies
+          serviceAccountsEnabled: true
+          clientAuthenticatorType: client-secret
+          secret: password123
+          protocolMappers:
+            - *customAudMapper
+          attributes:
+            flight_RCH2532101: "true"
+            flight_RCH2532102: "true"
+            classification_top_secret: "true"
+            functional_maintenance: "true"
+        sa_realm_roles:
+          - opentdf-standard
+      # USAF Demo Users - Maj Evan Riley (KC-46 Aircraft Commander)
+      - client:
+          clientID: evan.riley
+          enabled: true
+          name: evan.riley
+          serviceAccountsEnabled: true
+          clientAuthenticatorType: client-secret
+          secret: password123
+          protocolMappers:
+            - *customAudMapper
+          attributes:
+            flight_RCH2532101: "true"
+            classification_top_secret: "true"
+        sa_realm_roles:
+          - opentdf-standard
+      # USAF Demo Users - Capt Julie Lee (KC-46 Co-Pilot)
+      - client:
+          clientID: julie.lee
+          enabled: true
+          name: julie.lee
+          serviceAccountsEnabled: true
+          clientAuthenticatorType: client-secret
+          secret: password123
+          protocolMappers:
+            - *customAudMapper
+          attributes:
+            flight_RCH2532101: "true"
+            classification_top_secret: "true"
+        sa_realm_roles:
+          - opentdf-standard
+      # USAF Demo Users - TSgt Marcus Hayes (KC-46 Boom Operator)
+      - client:
+          clientID: marcus.hayes
+          enabled: true
+          name: marcus.hayes
+          serviceAccountsEnabled: true
+          clientAuthenticatorType: client-secret
+          secret: password123
+          protocolMappers:
+            - *customAudMapper
+          attributes:
+            flight_RCH2532101: "true"
+            classification_top_secret: "true"
+        sa_realm_roles:
+          - opentdf-standard
+      # USAF Demo Users - Maj Jonathan Fernando (C-17 Aircraft Commander)
+      - client:
+          clientID: jonathan.fernando
+          enabled: true
+          name: jonathan.fernando
+          serviceAccountsEnabled: true
+          clientAuthenticatorType: client-secret
+          secret: password123
+          protocolMappers:
+            - *customAudMapper
+          attributes:
+            flight_RCH2532102: "true"
+            classification_top_secret: "true"
+        sa_realm_roles:
+          - opentdf-standard
+      # USAF Demo Users - Capt Sarah Chen (C-17 Co-Pilot)
+      - client:
+          clientID: sarah.chen
+          enabled: true
+          name: sarah.chen
+          serviceAccountsEnabled: true
+          clientAuthenticatorType: client-secret
+          secret: password123
+          protocolMappers:
+            - *customAudMapper
+          attributes:
+            flight_RCH2532102: "true"
+            classification_top_secret: "true"
+        sa_realm_roles:
+          - opentdf-standard
+      # USAF Demo Users - SrA PJ Jones (KC-46 Maintainer)
+      - client:
+          clientID: pj.jones
+          enabled: true
+          name: pj.jones
+          serviceAccountsEnabled: true
+          clientAuthenticatorType: client-secret
+          secret: password123
+          protocolMappers:
+            - *customAudMapper
+          attributes:
+            flight_RCH2532101: "true"
+            classification_secret: "true"
+            functional_maintenance: "true"
+        sa_realm_roles:
+          - opentdf-standard
     users:
       - username: sample-user
         enabled: true
