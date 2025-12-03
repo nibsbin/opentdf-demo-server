@@ -732,6 +732,19 @@ func createUser(ctx context.Context, client *gocloak.GoCloak, token *gocloak.JWT
 			}
 			if len(users) == 1 {
 				longUserID = *users[0].ID
+				// Update user attributes if provided
+				if newUser.Attributes != nil {
+					users[0].Attributes = newUser.Attributes
+					err = client.UpdateUser(ctx, token.AccessToken, connectParams.Realm, *users[0])
+					if err != nil {
+						slog.Error("error updating user attributes",
+							slog.String("username", username),
+							slog.Any("error", err))
+						return nil, err
+					}
+					//nolint:sloglint // allow existing emojis
+					slog.Info("✅ user attributes updated", slog.String("username", username))
+				}
 			} else {
 				err = fmt.Errorf("error, %s user not found", username)
 				return nil, err

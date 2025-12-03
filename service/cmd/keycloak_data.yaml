@@ -81,33 +81,162 @@ realms:
             - 'http://localhost:*'
           protocolMappers:
             - *customAudMapper
+      # USAF Refueling Scenario - Service Account Clients
+      # Col Ashley Nies - Wing Commander (Full Access)
+      - client:
+          clientID: ashley.nies
+          enabled: true
+          name: ashley.nies
+          serviceAccountsEnabled: true
+          clientAuthenticatorType: client-secret
+          secret: password123
+          protocolMappers:
+            - *customAudMapper
+        sa_realm_roles:
+          - opentdf-standard
+      # KC-46 Crew (RCH2532101)
+      # Maj Evan Riley - KC-46 Aircraft Commander
+      - client:
+          clientID: evan.riley
+          enabled: true
+          name: evan.riley
+          serviceAccountsEnabled: true
+          clientAuthenticatorType: client-secret
+          secret: password123
+          protocolMappers:
+            - *customAudMapper
+        sa_realm_roles:
+          - opentdf-standard
+      # Capt Julie Lee - KC-46 Co-Pilot
+      - client:
+          clientID: julie.lee
+          enabled: true
+          name: julie.lee
+          serviceAccountsEnabled: true
+          clientAuthenticatorType: client-secret
+          secret: password123
+          protocolMappers:
+            - *customAudMapper
+        sa_realm_roles:
+          - opentdf-standard
+      # TSgt Marcus Hayes - KC-46 Boom Operator
+      - client:
+          clientID: marcus.hayes
+          enabled: true
+          name: marcus.hayes
+          serviceAccountsEnabled: true
+          clientAuthenticatorType: client-secret
+          secret: password123
+          protocolMappers:
+            - *customAudMapper
+        sa_realm_roles:
+          - opentdf-standard
+      # C-17 Crew (RCH2532102)
+      # Maj Jonathan Fernando - C-17 Aircraft Commander
+      - client:
+          clientID: jonathan.fernando
+          enabled: true
+          name: jonathan.fernando
+          serviceAccountsEnabled: true
+          clientAuthenticatorType: client-secret
+          secret: password123
+          protocolMappers:
+            - *customAudMapper
+        sa_realm_roles:
+          - opentdf-standard
+      # Capt Sarah Chen - C-17 Co-Pilot
+      - client:
+          clientID: sarah.chen
+          enabled: true
+          name: sarah.chen
+          serviceAccountsEnabled: true
+          clientAuthenticatorType: client-secret
+          secret: password123
+          protocolMappers:
+            - *customAudMapper
+        sa_realm_roles:
+          - opentdf-standard
+      # SrA PJ Jones - KC-46 Maintainer
+      - client:
+          clientID: pj.jones
+          enabled: true
+          name: pj.jones
+          serviceAccountsEnabled: true
+          clientAuthenticatorType: client-secret
+          secret: password123
+          protocolMappers:
+            - *customAudMapper
+        sa_realm_roles:
+          - opentdf-standard
     users:
-      - username: sample-user
+      # Service account users with ABAC attributes
+      # Col Ashley Nies - Wing Commander (Full Access)
+      - username: service-account-ashley.nies
         enabled: true
-        firstName: sample
-        lastName: user
-        email: sampleuser@sample.com
-        credentials:
-          - value: testuser123
-            type: password
         attributes:
-          superhero_name:
-            - thor
-          superhero_group:
-            - avengers
-        groups:
-          - mygroup
-        realmRoles:
-          - opentdf-admin
-        clientRoles:
-          realm-management:
-            - view-clients
-            - query-clients
-            - view-users
-            - query-users
-          tdf-entity-resolution:
-            - entity-resolution-test-role
-        copies: 10
+          flight_id:
+            - RCH2532101
+            - RCH2532102
+          classification:
+            - top-secret-fictional
+            - secret-fictional
+          functional:
+            - maintenance
+      # Maj Evan Riley - KC-46 Aircraft Commander
+      - username: service-account-evan.riley
+        enabled: true
+        attributes:
+          flight_id:
+            - RCH2532101
+          classification:
+            - top-secret-fictional
+            - secret-fictional
+      # Capt Julie Lee - KC-46 Co-Pilot
+      - username: service-account-julie.lee
+        enabled: true
+        attributes:
+          flight_id:
+            - RCH2532101
+          classification:
+            - top-secret-fictional
+            - secret-fictional
+      # TSgt Marcus Hayes - KC-46 Boom Operator
+      - username: service-account-marcus.hayes
+        enabled: true
+        attributes:
+          flight_id:
+            - RCH2532101
+          classification:
+            - top-secret-fictional
+            - secret-fictional
+      # Maj Jonathan Fernando - C-17 Aircraft Commander
+      - username: service-account-jonathan.fernando
+        enabled: true
+        attributes:
+          flight_id:
+            - RCH2532102
+          classification:
+            - top-secret-fictional
+            - secret-fictional
+      # Capt Sarah Chen - C-17 Co-Pilot
+      - username: service-account-sarah.chen
+        enabled: true
+        attributes:
+          flight_id:
+            - RCH2532102
+          classification:
+            - top-secret-fictional
+            - secret-fictional
+      # SrA PJ Jones - KC-46 Maintainer
+      - username: service-account-pj.jones
+        enabled: true
+        attributes:
+          flight_id:
+            - RCH2532101
+          classification:
+            - secret-fictional
+          functional:
+            - maintenance
     token_exchanges:
       - start_client: opentdf
         target_client: opentdf-sdk

@@ -10,4 +10,4 @@ sudo go run ./service start &
 sleep 6
 
 # test
-otdfctl policy attributes list --host http://localhost:8080 --with-client-creds '{"clientId":"opentdf","clientSecret":"secret"}' --tls-no-verify
+otdfctl policy attributes list --host http://localhost:8080 --with-client-creds '{"clientId":"sarah.chen","clientSecret":"password123"}' --tls-no-verify
