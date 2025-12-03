@@ -129,9 +129,9 @@ realms:
           protocolMappers:
             - *customAudMapper
           attributes:
-            flight_RCH2532101: "true"
-            flight_RCH2532102: "true"
-            classification_top_secret: "true"
+            flight_rch2532101: "true"
+            flight_rch2532102: "true"
+            classification_topsecret: "true"
             functional_maintenance: "true"
         sa_realm_roles:
           - opentdf-standard
@@ -146,8 +146,8 @@ realms:
           protocolMappers:
             - *customAudMapper
           attributes:
-            flight_RCH2532101: "true"
-            classification_top_secret: "true"
+            flight_rch2532101: "true"
+            classification_topsecret: "true"
         sa_realm_roles:
           - opentdf-standard
       # USAF Demo Users - Capt Julie Lee (KC-46 Co-Pilot)
@@ -161,8 +161,8 @@ realms:
           protocolMappers:
             - *customAudMapper
           attributes:
-            flight_RCH2532101: "true"
-            classification_top_secret: "true"
+            flight_rch2532101: "true"
+            classification_topsecret: "true"
         sa_realm_roles:
           - opentdf-standard
       # USAF Demo Users - TSgt Marcus Hayes (KC-46 Boom Operator)
@@ -176,8 +176,8 @@ realms:
           protocolMappers:
             - *customAudMapper
           attributes:
-            flight_RCH2532101: "true"
-            classification_top_secret: "true"
+            flight_rch2532101: "true"
+            classification_topsecret: "true"
         sa_realm_roles:
           - opentdf-standard
       # USAF Demo Users - Maj Jonathan Fernando (C-17 Aircraft Commander)
@@ -191,8 +191,8 @@ realms:
           protocolMappers:
             - *customAudMapper
           attributes:
-            flight_RCH2532102: "true"
-            classification_top_secret: "true"
+            flight_rch2532102: "true"
+            classification_topsecret: "true"
         sa_realm_roles:
           - opentdf-standard
       # USAF Demo Users - Capt Sarah Chen (C-17 Co-Pilot)
@@ -206,8 +206,8 @@ realms:
           protocolMappers:
             - *customAudMapper
           attributes:
-            flight_RCH2532102: "true"
-            classification_top_secret: "true"
+            flight_rch2532102: "true"
+            classification_topsecret: "true"
         sa_realm_roles:
           - opentdf-standard
       # USAF Demo Users - SrA PJ Jones (KC-46 Maintainer)
@@ -221,7 +221,7 @@ realms:
           protocolMappers:
             - *customAudMapper
           attributes:
-            flight_RCH2532101: "true"
+            flight_rch2532101: "true"
             classification_secret: "true"
             functional_maintenance: "true"
         sa_realm_roles:

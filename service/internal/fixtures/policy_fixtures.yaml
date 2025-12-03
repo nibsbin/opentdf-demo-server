@@ -108,11 +108,11 @@ attributes:
       active: true
 
     # USAF Demo Scenario Attributes - Flag-based for simple matching
-    # Classification flags
-    demo.usaf.mil/attr/classification_top_secret:
+    # Classification flags (all lowercase for FQN compatibility)
+    demo.usaf.mil/attr/classification_topsecret:
       id: e1536f25-d287-43ed-9ad9-2cf4a7698e5a
       namespace_id: a1b2c3d4-e5f6-7890-abcd-ef1234567890
-      name: classification_top_secret
+      name: classification_topsecret
       rule: ANY_OF
       active: true
     demo.usaf.mil/attr/classification_secret:
@@ -121,17 +121,17 @@ attributes:
       name: classification_secret
       rule: ANY_OF
       active: true
-    # Flight ID flags - each flight is a separate attribute
-    demo.usaf.mil/attr/flight_RCH2532101:
+    # Flight ID flags - each flight is a separate attribute (lowercase)
+    demo.usaf.mil/attr/flight_rch2532101:
       id: f2647e36-e398-4bae-acde-0f2345678901
       namespace_id: a1b2c3d4-e5f6-7890-abcd-ef1234567890
-      name: flight_RCH2532101
+      name: flight_rch2532101
       rule: ANY_OF
       active: true
-    demo.usaf.mil/attr/flight_RCH2532102:
+    demo.usaf.mil/attr/flight_rch2532102:
       id: f2647e36-e398-4bae-acde-0f2345678902
       namespace_id: a1b2c3d4-e5f6-7890-abcd-ef1234567890
-      name: flight_RCH2532102
+      name: flight_rch2532102
       rule: ANY_OF
       active: true
     # Functional flags
@@ -155,6 +155,17 @@ attribute_key_access_servers:
     key_access_server_id: 34f2acdc-3d9c-4e92-80b6-90fe4dc9afcb
   - attribute_id: 6a261d68-0899-4e17-bb2f-124abba7c09c
     key_access_server_id: e36640a6-61c5-4d4c-a45b-0e0a26d1c45f
+  # USAF Demo - assign KAS to all demo attributes
+  - attribute_id: e1536f25-d287-43ed-9ad9-2cf4a7698e5a  # classification_topsecret
+    key_access_server_id: 34f2acdc-3d9c-4e92-80b6-90fe4dc9afcb
+  - attribute_id: e1536f25-d287-43ed-9ad9-2cf4a7698e5b  # classification_secret
+    key_access_server_id: 34f2acdc-3d9c-4e92-80b6-90fe4dc9afcb
+  - attribute_id: f2647e36-e398-4bae-acde-0f2345678901  # flight_rch2532101
+    key_access_server_id: 34f2acdc-3d9c-4e92-80b6-90fe4dc9afcb
+  - attribute_id: f2647e36-e398-4bae-acde-0f2345678902  # flight_rch2532102
+    key_access_server_id: 34f2acdc-3d9c-4e92-80b6-90fe4dc9afcb
+  - attribute_id: 03758f47-f409-5cbf-bcef-0a3456789012  # functional_maintenance
+    key_access_server_id: 34f2acdc-3d9c-4e92-80b6-90fe4dc9afcb
 
 ##
 # Attribute Values
@@ -208,7 +219,7 @@ attribute_values:
       active: true
 
     # USAF Demo Scenario Values - Classification flags (value=true means has clearance)
-    demo.usaf.mil/attr/classification_top_secret/value/true:
+    demo.usaf.mil/attr/classification_topsecret/value/true:
       id: d1a2b3c4-1111-2222-3333-444455556666
       attribute_definition_id: e1536f25-d287-43ed-9ad9-2cf4a7698e5a
       value: "true"
@@ -220,12 +231,12 @@ attribute_values:
       active: true
 
     # USAF Demo Scenario Values - Flight ID flags (value=true means has access)
-    demo.usaf.mil/attr/flight_RCH2532101/value/true:
+    demo.usaf.mil/attr/flight_rch2532101/value/true:
       id: e2b3c4d5-2222-3333-4444-555566667777
       attribute_definition_id: f2647e36-e398-4bae-acde-0f2345678901
       value: "true"
       active: true
-    demo.usaf.mil/attr/flight_RCH2532102/value/true:
+    demo.usaf.mil/attr/flight_rch2532102/value/true:
       id: e2b3c4d5-2222-3333-4444-555566668888
       attribute_definition_id: f2647e36-e398-4bae-acde-0f2345678902
       value: "true"
@@ -305,7 +316,7 @@ subject_mappings:
       subject_condition_set_id: 86621a00-b63e-42e9-bea5-40ba52d98ede
 
     # USAF Demo Subject Mappings - Classification flags
-    subject_mapping_usaf_classification_top_secret:
+    subject_mapping_usaf_classification_topsecret:
       id: aa11bb22-cc33-dd44-ee55-ff6677889900
       attribute_value_id: d1a2b3c4-1111-2222-3333-444455556666
       subject_condition_set_id: aa11bb22-cc33-dd44-ee55-0c0d0e0f0001
@@ -315,11 +326,11 @@ subject_mappings:
       subject_condition_set_id: aa11bb22-cc33-dd44-ee55-0c0d0e0f0002
 
     # USAF Demo Subject Mappings - Flight ID flags
-    subject_mapping_usaf_flight_RCH2532101:
+    subject_mapping_usaf_flight_rch2532101:
       id: aa11bb22-cc33-dd44-ee55-ff6677889902
       attribute_value_id: e2b3c4d5-2222-3333-4444-555566667777
       subject_condition_set_id: aa11bb22-cc33-dd44-ee55-0c0d0e0f0003
-    subject_mapping_usaf_flight_RCH2532102:
+    subject_mapping_usaf_flight_rch2532102:
       id: aa11bb22-cc33-dd44-ee55-ff6677889903
       attribute_value_id: e2b3c4d5-2222-3333-4444-555566668888
       subject_condition_set_id: aa11bb22-cc33-dd44-ee55-0c0d0e0f0004
@@ -453,15 +464,15 @@ subject_condition_set:
                       - opentdf-sdk
 
     # USAF Demo Condition Sets - Flag-based approach
-    # Each attribute flag (e.g. classification_top_secret) is checked for value "true"
-    subject_condition_usaf_classification_top_secret:
+    # Each attribute flag (e.g. classification_topsecret) is checked for value "true"
+    subject_condition_usaf_classification_topsecret:
       id: aa11bb22-cc33-dd44-ee55-0c0d0e0f0001
       condition:
         subjectSets:
           - conditionGroups:
               - booleanOperator: CONDITION_BOOLEAN_TYPE_ENUM_OR
                 conditions:
-                  - subjectExternalSelectorValue: ".attributes.classification_top_secret"
+                  - subjectExternalSelectorValue: ".attributes.classification_topsecret"
                     operator: SUBJECT_MAPPING_OPERATOR_ENUM_IN
                     subjectExternalValues:
                       - "true"
@@ -477,29 +488,29 @@ subject_condition_set:
                     operator: SUBJECT_MAPPING_OPERATOR_ENUM_IN
                     subjectExternalValues:
                       - "true"
-                  - subjectExternalSelectorValue: ".attributes.classification_top_secret"
+                  - subjectExternalSelectorValue: ".attributes.classification_topsecret"
                     operator: SUBJECT_MAPPING_OPERATOR_ENUM_IN
                     subjectExternalValues:
                       - "true"
-    subject_condition_usaf_flight_RCH2532101:
+    subject_condition_usaf_flight_rch2532101:
       id: aa11bb22-cc33-dd44-ee55-0c0d0e0f0003
       condition:
         subjectSets:
           - conditionGroups:
               - booleanOperator: CONDITION_BOOLEAN_TYPE_ENUM_OR
                 conditions:
-                  - subjectExternalSelectorValue: ".attributes.flight_RCH2532101"
+                  - subjectExternalSelectorValue: ".attributes.flight_rch2532101"
                     operator: SUBJECT_MAPPING_OPERATOR_ENUM_IN
                     subjectExternalValues:
                       - "true"
-    subject_condition_usaf_flight_RCH2532102:
+    subject_condition_usaf_flight_rch2532102:
       id: aa11bb22-cc33-dd44-ee55-0c0d0e0f0004
       condition:
         subjectSets:
           - conditionGroups:
               - booleanOperator: CONDITION_BOOLEAN_TYPE_ENUM_OR
                 conditions:
-                  - subjectExternalSelectorValue: ".attributes.flight_RCH2532102"
+                  - subjectExternalSelectorValue: ".attributes.flight_rch2532102"
                     operator: SUBJECT_MAPPING_OPERATOR_ENUM_IN
                     subjectExternalValues:
                       - "true"
@@ -576,16 +587,16 @@ subject_mapping_actions_relation:
       action_name: create
 
     # USAF Demo Subject Mapping Actions - All grant read access
-    subject_mapping_usaf_classification_top_secret_read:
+    subject_mapping_usaf_classification_topsecret_read:
       subject_mapping_id: aa11bb22-cc33-dd44-ee55-ff6677889900
       action_name: read
     subject_mapping_usaf_classification_secret_read:
       subject_mapping_id: aa11bb22-cc33-dd44-ee55-ff6677889901
       action_name: read
-    subject_mapping_usaf_flight_RCH2532101_read:
+    subject_mapping_usaf_flight_rch2532101_read:
       subject_mapping_id: aa11bb22-cc33-dd44-ee55-ff6677889902
       action_name: read
-    subject_mapping_usaf_flight_RCH2532102_read:
+    subject_mapping_usaf_flight_rch2532102_read:
       subject_mapping_id: aa11bb22-cc33-dd44-ee55-ff6677889903
       action_name: read
     subject_mapping_usaf_functional_maintenance_read:
@@ -665,10 +676,10 @@ kas_registry:
   data:
     key_access_server_1:
       id: 34f2acdc-3d9c-4e92-80b6-90fe4dc9afcb
-      uri: https://kas.example.com
+      uri: http://localhost:8080
       public_key:
-        remote: https://kas.example.com/public_key
-      name: kas-remote-example
+        remote: http://localhost:8080/kas/kas_public_key
+      name: local-kas
     key_access_server_2:
       id: e36640a6-61c5-4d4c-a45b-0e0a26d1c45f
       uri: https://local.kas.com:3000
