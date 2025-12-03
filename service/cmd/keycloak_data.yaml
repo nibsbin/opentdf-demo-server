@@ -8,6 +8,46 @@ customAudMapper: &customAudMapper
     included.custom.audience: *serverBaseUrl
     access.token.claim: "true"
     id.token.claim: "true"
+# Attribute mappers for ABAC
+flightIdMapper: &flightIdMapper
+  name: flight_id-mapper
+  protocol: openid-connect
+  protocolMapper: oidc-usermodel-attribute-mapper
+  config:
+    user.attribute: flight_id
+    claim.name: flight_id
+    jsonType.label: String
+    multivalued: "true"
+    aggregate.attrs: "true"
+    id.token.claim: "true"
+    access.token.claim: "true"
+    userinfo.token.claim: "true"
+classificationMapper: &classificationMapper
+  name: classification-mapper
+  protocol: openid-connect
+  protocolMapper: oidc-usermodel-attribute-mapper
+  config:
+    user.attribute: classification
+    claim.name: classification
+    jsonType.label: String
+    multivalued: "true"
+    aggregate.attrs: "true"
+    id.token.claim: "true"
+    access.token.claim: "true"
+    userinfo.token.claim: "true"
+functionalMapper: &functionalMapper
+  name: functional-mapper
+  protocol: openid-connect
+  protocolMapper: oidc-usermodel-attribute-mapper
+  config:
+    user.attribute: functional
+    claim.name: functional
+    jsonType.label: String
+    multivalued: "true"
+    aggregate.attrs: "true"
+    id.token.claim: "true"
+    access.token.claim: "true"
+    userinfo.token.claim: "true"
 realms:
   - realm_repepresentation:
       realm: opentdf
@@ -92,6 +132,9 @@ realms:
           secret: password123
           protocolMappers:
             - *customAudMapper
+            - *flightIdMapper
+            - *classificationMapper
+            - *functionalMapper
         sa_realm_roles:
           - opentdf-standard
       # KC-46 Crew (RCH2532101)
@@ -105,6 +148,8 @@ realms:
           secret: password123
           protocolMappers:
             - *customAudMapper
+            - *flightIdMapper
+            - *classificationMapper
         sa_realm_roles:
           - opentdf-standard
       # Capt Julie Lee - KC-46 Co-Pilot
@@ -117,6 +162,8 @@ realms:
           secret: password123
           protocolMappers:
             - *customAudMapper
+            - *flightIdMapper
+            - *classificationMapper
         sa_realm_roles:
           - opentdf-standard
       # TSgt Marcus Hayes - KC-46 Boom Operator
@@ -129,6 +176,8 @@ realms:
           secret: password123
           protocolMappers:
             - *customAudMapper
+            - *flightIdMapper
+            - *classificationMapper
         sa_realm_roles:
           - opentdf-standard
       # C-17 Crew (RCH2532102)
@@ -142,6 +191,8 @@ realms:
           secret: password123
           protocolMappers:
             - *customAudMapper
+            - *flightIdMapper
+            - *classificationMapper
         sa_realm_roles:
           - opentdf-standard
       # Capt Sarah Chen - C-17 Co-Pilot
@@ -154,6 +205,8 @@ realms:
           secret: password123
           protocolMappers:
             - *customAudMapper
+            - *flightIdMapper
+            - *classificationMapper
         sa_realm_roles:
           - opentdf-standard
       # SrA PJ Jones - KC-46 Maintainer
@@ -166,6 +219,9 @@ realms:
           secret: password123
           protocolMappers:
             - *customAudMapper
+            - *flightIdMapper
+            - *classificationMapper
+            - *functionalMapper
         sa_realm_roles:
           - opentdf-standard
     users:
