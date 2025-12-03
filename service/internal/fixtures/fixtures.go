@@ -770,6 +770,10 @@ func (f *Fixtures) provisionRegisteredResourceActionAttributeValues() int64 {
 
 //nolint:sloglint // preserve emoji usage
 func (f *Fixtures) provision(t string, c []string, v [][]string) int64 {
+	// Skip empty provisions
+	if len(v) == 0 || t == "" {
+		return 0
+	}
 	rows, err := f.db.ExecInsert(t, c, v...)
 	if err != nil {
 		slog.Error("⛔️ 📦 issue with insert into table - check policy_fixtures.yaml for issues", slog.String("table", t), slog.Any("err", err))

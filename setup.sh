@@ -14,7 +14,5 @@ if [ -f ./keys/localhost.key ] || [ -f ./keys/localhost.crt ]; then
 	sudo chmod 644 ./keys/localhost.crt || true
 fi
 
-# Kill existing containers and start fresh
-sudo docker ps -aq | sudo xargs -r docker rm -f
 
-sudo sh ./startup.sh
+sudo sh ./startup.sh &
