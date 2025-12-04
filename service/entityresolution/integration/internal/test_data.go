@@ -39,7 +39,7 @@ var (
 			Username:    "alice",
 			Email:       "alice@opentdf.test",
 			DisplayName: "Alice Smith",
-			Password:    "password123",
+			Password:    "mock.jwt.token",
 			Groups:      []string{"users", "admins"},
 			DN:          "uid=alice,ou=users,dc=opentdf,dc=test",
 		},
@@ -123,7 +123,7 @@ func NewContractTestDataSet() *ContractTestDataSet {
 				Username:    "alice",
 				Email:       "alice@opentdf.test",
 				DisplayName: "Alice Smith",
-				Password:    "password123", // Add password for Keycloak
+				Password:    "mock.jwt.token", // Add password for Keycloak
 				Groups:      []string{"users", "admins"},
 			},
 			{

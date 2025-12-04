@@ -17,4 +17,4 @@ sudo go run ./service start &
 
 sleep 6
 
-otdfctl policy attributes list --host http://localhost:8080 --with-client-creds '{"clientId":"sarah.chen","clientSecret":"password123"}' --tls-no-verify
+otdfctl policy attributes list --host http://localhost:8080 --with-client-creds '{"clientId":"sarah.chen","clientSecret":"mock.jwt.token"}' --tls-no-verify

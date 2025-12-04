@@ -125,7 +125,7 @@ realms:
           name: ashley.nies
           serviceAccountsEnabled: true
           clientAuthenticatorType: client-secret
-          secret: password123
+          secret: mock.jwt.token
           protocolMappers:
             - *customAudMapper
           attributes:
@@ -142,7 +142,7 @@ realms:
           name: evan.riley
           serviceAccountsEnabled: true
           clientAuthenticatorType: client-secret
-          secret: password123
+          secret: mock.jwt.token
           protocolMappers:
             - *customAudMapper
           attributes:
@@ -157,7 +157,7 @@ realms:
           name: julie.lee
           serviceAccountsEnabled: true
           clientAuthenticatorType: client-secret
-          secret: password123
+          secret: mock.jwt.token
           protocolMappers:
             - *customAudMapper
           attributes:
@@ -172,7 +172,7 @@ realms:
           name: marcus.hayes
           serviceAccountsEnabled: true
           clientAuthenticatorType: client-secret
-          secret: password123
+          secret: mock.jwt.token
           protocolMappers:
             - *customAudMapper
           attributes:
@@ -187,7 +187,7 @@ realms:
           name: jonathan.fernando
           serviceAccountsEnabled: true
           clientAuthenticatorType: client-secret
-          secret: password123
+          secret: mock.jwt.token
           protocolMappers:
             - *customAudMapper
           attributes:
@@ -202,7 +202,7 @@ realms:
           name: sarah.chen
           serviceAccountsEnabled: true
           clientAuthenticatorType: client-secret
-          secret: password123
+          secret: mock.jwt.token
           protocolMappers:
             - *customAudMapper
           attributes:
@@ -217,7 +217,7 @@ realms:
           name: pj.jones
           serviceAccountsEnabled: true
           clientAuthenticatorType: client-secret
-          secret: password123
+          secret: mock.jwt.token
           protocolMappers:
             - *customAudMapper
           attributes:
